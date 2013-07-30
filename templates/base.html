@@ -47,11 +47,13 @@
             </div>
         </div>
 
+        {% if not hide_header %}
         <header class="jumbotron">
             <div class="container">
                 {% block header %}{% endblock %}
             </div>
         </header>
+        {% endif %}
 
         {% set flashes = flash() %}
 
