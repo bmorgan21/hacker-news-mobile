@@ -5,8 +5,12 @@
 {% block body %}
 <ul class="nav nav-tabs nav-stacked">
     {% for article in articles %}
-    <li>
-        <a {% if article.title != 'More' %}target="_blank"{% endif %} href="{{ article.href }}">{{ article.title }}</a>
+    <li class="article {% if article.title == 'More' %}more{% endif %}">
+        <span class="comment" onclick="window.open('https://news.ycombinator.com/{{ article.comment_href }}'); return false;"><i class="icon-comment"></i></span>
+        <a {% if article.title != 'More' %}target="_blank"{% endif %} href="{{ article.href }}">
+            {{ article.title }}<br/>
+            <small class="muted">{{ article.subtext }}</small>
+        </a>
     </li>
     {% endfor %}
 </ul>

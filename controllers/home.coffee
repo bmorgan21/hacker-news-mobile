@@ -26,7 +26,8 @@ class HomeController extends BaseController
                     $tr = $(el).closest('tr')
 
                     $a = $tr.find('td.title a')
-                    {title: $a.html(), href:$a.attr('href'), subtext: $tr.next('tr').find('td.subtext').html()}
+                    $subtext = $tr.next('tr').find('td.subtext')
+                    {title: $a.html(), href:$a.attr('href'), subtext: $subtext.text(), comment_href: $($subtext.find('a')[1]).attr('href')}
                 )
 
                 res.render('index.html', {articles:articles})
