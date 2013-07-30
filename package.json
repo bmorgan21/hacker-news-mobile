@@ -21,6 +21,7 @@
     "passport-google": "*",
     "underscore": "*",
     "humanize": "*",
-    "markdown": "*"
+    "markdown": "*",
+    "cheerio": "*"
   }
 }
