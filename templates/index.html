@@ -3,14 +3,12 @@
 {% set hide_header=true %}
 
 {% block body %}
-<ul class="nav nav-tabs nav-stacked">
+<ul class="list-group">
     {% for article in articles %}
-    <li class="article {% if article.title == 'More' %}more{% endif %}">
-        <span class="comment" onclick="window.open('https://news.ycombinator.com/{{ article.comment_href }}'); return false;"><i class="icon-comment"></i></span>
-        <a {% if article.title != 'More' %}target="_blank"{% endif %} href="{{ article.href }}">
-            {{ article.title }}<br/>
-            <small class="muted">{{ article.subtext }}</small>
-        </a>
+    <li class="list-group-item article {% if article.title == 'More' %}more{% endif %}">
+        <span class="badge pull-right">{{ article.points }}</span>
+        <a {% if article.title != 'More' %}target="_blank"{% endif %} href="{{ article.href }}">{{ article.title }}</a><br/>
+        <small class="muted">{{ article.subtext }}</small>
     </li>
     {% endfor %}
 </ul>

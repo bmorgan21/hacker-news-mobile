@@ -104,20 +104,21 @@ exports.configure = (app, skin) ->
     app.use(app.router)
 
     app.use((req, res, next) ->
-        res.status(404)
+        res.redirect("https://news.ycombinator.com#{req.originalUrl}")
+        # res.status(404)
 
-        # respond with html page
-        if (req.accepts('html'))
-            res.render('error/404.html', { url: req.url })
-            return
+        # # respond with html page
+        # if (req.accepts('html'))
+        #     res.render('error/404.html', { url: req.url })
+        #     return
 
-        # respond with json
-        if (req.accepts('json'))
-            res.send({ error: 'Not found' })
-            return
+        # # respond with json
+        # if (req.accepts('json'))
+        #     res.send({ error: 'Not found' })
+        #     return
 
-        # default to plain-text. send()
-        res.type('txt').send('Not found')
+        # # default to plain-text. send()
+        # res.type('txt').send('Not found')
     )
   # maybe this instead? ->  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }))
     app.use((err, req, res, next) ->
