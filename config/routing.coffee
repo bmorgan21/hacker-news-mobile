@@ -13,6 +13,7 @@ exports.configure = (app) ->
     app.get('/', homeController.index)
     app.get('/news:page', homeController.index)
     app.get('/x', homeController.index)
+    app.get('/r', homeController.redirect)
 
     # Redirect the user to Google for authentication.  When complete, Google
     # will redirect the user back to the application at
