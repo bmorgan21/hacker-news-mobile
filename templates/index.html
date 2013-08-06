@@ -6,7 +6,7 @@
 <ul class="list-group">
     {% for article in articles %}
     <li class="list-group-item article {% if article.title == 'More' %}more{% endif %}">
-        <span class="badge pull-right">{{ article.points }}</span>
+        {% if article.points %}<span class="badge pull-right">{{ article.points }}</span>{% endif %}
         <a {% if article.title != 'More' %}target="_blank"{% endif %} href="{{ article.href }}">{{ article.title }}</a><br/>
         <small class="muted">{{ article.subtext }}</small>
     </li>

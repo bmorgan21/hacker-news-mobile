@@ -29,7 +29,7 @@ class HomeController extends BaseController
                     $subtext = $tr.next('tr').find('td.subtext')
                     $points = $subtext.find('span')
                     $points.remove()
-                    {title: $a.html(), href:$a.attr('href'), subtext: $subtext.html(), points: $points.html(), comment_href: $($subtext.find('a')[1]).attr('href')}
+                    {title: $a.html(), href:$a.attr('href'), subtext: $subtext.html(), points: parseInt($points.html()), comment_href: $($subtext.find('a')[1]).attr('href')}
                 )
 
                 res.render('index.html', {articles:articles})
