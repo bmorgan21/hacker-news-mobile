@@ -28,13 +28,13 @@ exports.configure = (app, skin) ->
     # use $ NODE_ENV=production node examples/error-pages
     if ('production' == app.settings.env)
         app.disable('verbose errors')
-        hostname = 'stash.openmile.com'
+        hostname = 'hn.openmile.com'
 
     app.use(express.responseTime())
     app.use(express.favicon(path.join(skin, 'public/img/favicon.ico')))
     app.use(express.logger('dev'))
     app.use(express.cookieParser('echo echo echo can you hear me?'))
-    app.use(express.session({ secret: 'keyboard cat', cookie: { maxAge: 600000 }, store: new MongoStore({db:'stash'})}))
+    app.use(express.session({ secret: 'keyboard cat', cookie: { maxAge: 600000 }, store: new MongoStore({db:'hacker-news'})}))
 
     app.use(passport.initialize())
     app.use(passport.session())
