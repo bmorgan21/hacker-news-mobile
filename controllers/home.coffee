@@ -10,17 +10,18 @@ class HomeController extends BaseController
     redirect: (req, res, next) ->
         res.redirect(req.query.v)
 
-        models.Url.findOneAndUpdate({url:req.query.v}, {url:req.query.v, $inc: {click_count:1}, last_updated:Date.now()}, {upsert:true},
-            (err, obj) ->
-                if (err)
-                    next(err)
-                else
-                    obj.click_count++
-                )
+        if (req.user)
+            models.Url.findOneAndUpdate({user:req.user, url:req.query.v}, {user:req.user, url:req.query.v, $inc: {click_count:1}, last_updated:Date.now()}, {upsert:true},
+                (err, obj) ->
+                    if (err)
+                        next(err)
+                    else
+                        obj.click_count++
+                    )
 
     index: (req, res, next) ->
         urls_data = {}
-        q = models.Url.find().sort('-last_updated').limit(50)
+        q = models.Url.find({user:req.user}).sort('-last_updated').limit(50)
         q.execFind((err, urls) ->
             if err
                 next(err)
