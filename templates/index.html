@@ -8,7 +8,7 @@
     <li class="list-group-item article {% if article.title == 'More' %}more{% endif %}">
         {% if article.points %}<span class="badge pull-right">{{ article.points }}</span>{% endif %}
         {% if article.title != 'More' %}
-        <i class="icon-folder-{% if article.click_count %}open{% else %}close{% endif %}"></i> <a target="_blank" href="/r?{{ helpers.querystring.stringify({v: article.href}) }}">{{ article.title }}</a><br/>
+        {% if user %}<i class="icon-folder-{% if article.click_count %}open{% else %}close{% endif %}"></i> {% endif %}<a target="_blank" href="/r?{{ helpers.querystring.stringify({v: article.href}) }}">{{ article.title }}</a><br/>
         <small class="muted">{{ article.subtext }}</small>
         {% else %}
         <a href="{{ article.href }}">{{ article.title }}</a>
